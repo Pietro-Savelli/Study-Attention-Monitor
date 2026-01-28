@@ -52,6 +52,7 @@ class FaceDetector:
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         results = self.face_mesh.process(rgb_frame)
 
+
         if results.multi_face_landmarks:
             return results.multi_face_landmarks[0].landmark
         
