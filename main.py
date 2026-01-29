@@ -1,10 +1,45 @@
 import cv2
 from camera import Camera
-from detector import FaceDetector
+from faceDetector import FaceDetector
 from eyeAnalyzer import EyeAnalyzer
+from deskDetector import DeskDetector
 
 
-#RIORGANIZZA IL MAIN 
+
+# # MAIN DELLA PARTE DELLA deskDetector
+
+# cam = Camera(camera_index=0)  # creo la camera 
+# det = DeskDetector()
+# analyzer = EyeAnalyzer()
+# analizza = True 
+
+# while True:
+#     frame = cam.get_frame()
+
+#     if frame is not None:
+#         trovato = det.detect(frame)
+
+#         if trovato == "STUDIO":
+#             cv2.putText(frame, "Sta studiando al pc", (100, 100), 
+#                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+#         else:
+#             cv2.putText(frame, "NON sta studiando al pc", (100, 100), 
+#                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+
+#         cv2.imshow("Webcam", frame)
+#         k=cv2.waitKey(1)
+#         if k == ord('q'):
+#             break
+
+#     else:
+#         print("Errore: nessun frame")
+#         break
+
+# cam.release()                #rilascio cam
+# cv2.destroyAllWindows()
+
+
+# MAIN DELLA PARTE DELLA faceDetecrtor
 
 cam = Camera(camera_index=0)  # creo la camera 
 det = FaceDetector()
@@ -13,6 +48,7 @@ analizza = True
 
 while True:
     frame = cam.get_frame()
+    sta_guardando = False
 
     if frame is not None:
         if analizza:
