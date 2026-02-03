@@ -3,13 +3,13 @@ from ultralytics import YOLO
 
 class DeskDetector:
     def __init__(self):
-        self.model = YOLO("yolov8s.pt") #versione nano"yolov8n.pt" (non funzionava)
+        self.model = YOLO("yolov8s.pt") 
 
         self.distrazioni = [67]  # cod di Cell phone
         self.studio = [63, 64, 66, 73, 62]# cod di:Laptop, Mouse, Keyboard, Book, (TV/Monitor) non esiste tablet
 
         self.nomi_oggetti = {
-            67: "TELEFONO (No!)",
+            67: "TELEFONO",
             63: "Laptop",
             64: "Mouse",
             66: "Tastiera",
@@ -62,7 +62,7 @@ class DeskDetector:
                         cv2.putText(frame, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
 
         if trovata_distrazione:
-            stato_attuale = "DISTRAZIONE"
+            stato_attuale = "TELEFONO"
         elif trovato_studio:
             stato_attuale = "STUDIO"
         else:
